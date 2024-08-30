@@ -10,6 +10,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Header
 -Login form
 -sign up form
+-form validation 
+-useRef
+-firebase setup
+-deploy app to production
+-created sign up and sign in
+-redux store
+    -create app store
+    -create slices
+
 
 
 # Features
