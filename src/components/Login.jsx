@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { checkValidData } from '../utils/validation';
-import {  createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {  createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 function Login() {
     
@@ -11,11 +13,13 @@ function Login() {
     let [errorMessage, setErrorMessage]= useState();
 
     const navigate =useNavigate();
+    const dispatch=useDispatch();
 
     const toggleLogin = () => {
         setIsSignInForm(!isSignInForm);
     }
 
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
     const handleFormValidation = () => {
@@ -25,20 +29,31 @@ function Login() {
         if(message) return;
 
         if(!isSignInForm){
-              createUserWithEmailAndPassword(auth,email.current.value, password.current.value)
-                  .then((userCredential) => {
-                  // Signed up 
+            createUserWithEmailAndPassword(
+                auth,
+                email.current.value,
+                password.current.value
+              )
+                .then((userCredential) => {
                   const user = userCredential.user;
-                  console.log(user);
-            navigate("/browse");
-
-
-              })
-                  .catch((error) => {
+                  updateProfile(user, {
+                    displayName: name.current.value,
+                    photoURL: "https://avatars.githubusercontent.com/u/12824231?v=4",
+                  })
+                    .then(() => {
+                        const {uid, email, displayName,photoURL} = auth.currentUser;
+                        dispatch(addUser({uid:uid, email:email, displayName:displayName, photoURL:photoURL}));
+                      navigate("/browse");
+                    })
+                    .catch((error) => {
+                      setErrorMessage(error.message);
+                    });
+                })
+                .catch((error) => {
                   const errorCode = error.code;
                   const errorMessage = error.message;
-                 setErrorMessage(errorCode + " "+errorMessage)
-              });
+                  setErrorMessage(errorCode + "-" + errorMessage);
+                });
 
         }else{
           //sign in
@@ -77,6 +92,7 @@ function Login() {
                 <h1 className='font-bold text-2xl md:text-3xl my-3'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
                 {!isSignInForm && (
                     <input
+                    ref={name}
                         type="text"
                         placeholder="Full Name"
                         className="p-3 my-3 w-full bg-gray-700 rounded-sm bg-opacity-50 border border-gray-500"
