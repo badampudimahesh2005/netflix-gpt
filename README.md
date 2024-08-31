@@ -18,6 +18,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 -redux store
     -create app store
     -create slices
+ BugFix: Sign up user displayName and profile picture update
+- BugFix: if the user is not logged in Redirect /browse to Login Page and vice-versa
 
 
 

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
     const handleSignout =()=>{
         signOut(auth).then(() => {
-            navigate("/");
+          
           }).catch((error) => {
             navigate("/error")
           });
