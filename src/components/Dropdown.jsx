@@ -3,6 +3,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { auth } from '../utils/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { USER_ICON } from '../utils/constants';
 
  const Dropdown =({url}) =>{
 
@@ -20,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
       <div>
         <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900  bg-black shadow-sm  bg-transparent">
             {/* options */}
-         <img className='rounded' src="https://occ-0-2590-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABeuqjuQsRgqEDlibtJTI5BMf8IxhLlLOeIT6xI4TL57mqv7XHja43gx02S8pZVe8JNGRQXjnrUk1VcsTXqi83tFKPI6OR3k.png?r=bd7" alt="" />
+         <img className='rounded' src={USER_ICON} alt="" />
           <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
         </MenuButton>
       </div>
@@ -32,7 +33,7 @@ import { useNavigate } from 'react-router-dom';
         <div className="py-1">
           <MenuItem>
             <a
-              href="/account"
+              href=""
               className="block px-4 py-2 text-sm text-white data-[focus]:opacity-50"
             >
               Account settings
@@ -40,7 +41,7 @@ import { useNavigate } from 'react-router-dom';
           </MenuItem>
           <MenuItem>
             <a
-              href="support"
+              href=""
               className="block px-4 py-2 text-sm text-white data-[focus]:opacity-50"
             >
               Support
@@ -48,7 +49,7 @@ import { useNavigate } from 'react-router-dom';
           </MenuItem>
           <MenuItem>
             <a
-              href="/license"
+              href=""
               className="block px-4 py-2 text-sm text-white data-[focus]:opacity-50"
             >
               License
