@@ -32,6 +32,10 @@ function Header() {
     return ()=> unsubscribe();
   },[]);
 
+  const handleGptSearchClick =()=>{
+    
+  }
+
   return (
 
    
@@ -41,6 +45,10 @@ function Header() {
       src= {LOGO_URL}
       alt="logo"
     />
+     <button
+            className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+            onClick={handleGptSearchClick}
+      ></button>
    {user && ( <div className="flex">
       <Dropdown  />
     </div>)}
