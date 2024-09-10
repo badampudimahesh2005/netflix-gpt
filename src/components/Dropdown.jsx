@@ -21,7 +21,7 @@ import { USER_ICON } from '../utils/constants';
       <div>
         <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900  bg-black shadow-sm  bg-transparent">
             {/* options */}
-         <img className='rounded' src={USER_ICON} alt="" />
+         <img className=' w-full rounded' src={USER_ICON} alt="" />
           <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
         </MenuButton>
       </div>
