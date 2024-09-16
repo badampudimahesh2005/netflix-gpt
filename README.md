@@ -55,3 +55,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - NetflixGPT
     - Search Bar
     - Movie Suggestions
+
+
+
+    # Project Setup
+- Before starting the project please add .env file and add TMDB and OPENAI KEY into it.
